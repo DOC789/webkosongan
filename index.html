@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Template PAS - MyRuko Kit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --primary: #10b981; --bg-dark: #0f172a; --glass: rgba(255, 255, 255, 0.05); }
+        body { background-color: var(--bg-dark); color: #e2e8f0; font-family: 'Inter', sans-serif; }
+        .glass-card { background: var(--glass); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; }
+    </style>
+</head>
+<body class="p-6 leading-relaxed">
+
+    <div class="max-w-2xl mx-auto py-10">
+        <header class="text-center mb-10">
+            <h1 id="txt-produk" class="text-3xl font-black text-white mb-4 uppercase tracking-tighter">Memuat Data...</h1>
+            <div class="glass-card p-6 border-l-4 border-emerald-500 text-left">
+                <ul class="space-y-3 text-sm text-gray-300">
+                    <li id="txt-m1"></li>
+                    <li id="txt-m2"></li>
+                    <li id="txt-m3"></li>
+                </ul>
+            </div>
+        </header>
+
+        <div class="glass-card p-3 mb-10">
+            <img id="img-produk" src="" class="w-full h-64 object-cover rounded-xl" alt="Foto Produk">
+        </div>
+
+        <section class="text-center mb-12">
+            <p id="txt-solusi" class="text-lg text-gray-300 italic mb-8"></p>
+            
+            <div class="text-4xl font-black text-white mb-2">Rp <span id="txt-harga">0</span></div>
+            <p class="text-gray-500 line-through">Harga Normal Rp <span id="txt-coret">0</span></p>
+        </section>
+
+        <div class="glass-card p-8">
+            <h3 class="text-xl font-bold mb-6 text-center text-white">Isi Data Pesanan</h3>
+            <form id="orderForm" class="space-y-4">
+                <input type="text" id="input-nama" placeholder="Nama Lengkap" class="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-emerald-500" required>
+                <button type="submit" class="w-full bg-emerald-500 py-4 rounded-full font-black text-white shadow-xl hover:scale-105 transition-all">
+                    PESAN VIA WHATSAPP
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let configData = {};
+
+        // Fungsi mengambil data dari file JSON
+        fetch('config.json')
+            .then(response => response.json())
+            .then(data => {
+                configData = data;
+                // Update tampilan dari JSON
+                document.getElementById('txt-produk').innerText = data.nama_produk;
+                document.getElementById('img-produk').src = data.link_gambar;
+                document.getElementById('txt-m1').innerText = "❌ " + data.masalah_1;
+                document.getElementById('txt-m2').innerText = "❌ " + data.masalah_2;
+                document.getElementById('txt-m3').innerText = "❌ " + data.masalah_3;
+                document.getElementById('txt-solusi').innerText = data.solusi_singkat;
+                document.getElementById('txt-harga').innerText = data.harga_promo;
+                document.getElementById('txt-coret').innerText = data.harga_coret;
+            })
+            .catch(err => console.error("Gagal memuat JSON. Pastikan file config.json ada dalam satu folder.", err));
+
+        // Handle Form WhatsApp
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const namaClient = document.getElementById('input-nama').value;
+            const pesanWA = `*PESANAN BARU*%0A*Produk:* ${configData.nama_produk}%0A*Nama Pembeli:* ${namaClient}%0A*Harga:* Rp ${configData.harga_promo}`;
+            window.location.href = `https://wa.me/${configData.nomor_wa}?text=${pesanWA}`;
+        });
+    </script>
+</body>
+</html>
