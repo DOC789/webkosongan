@@ -84,6 +84,23 @@
         let configData = {};
 
         // Fungsi mengambil data dari file JSON
+
+// ... di dalam fetch('config.json') ...
+.then(data => {
+    configData = data;
+    document.getElementById('txt-produk').innerText = data.nama_produk;
+    document.getElementById('img-produk').src = data.link_gambar;
+    
+    // Memasukkan teks dengan ikon khusus
+    document.getElementById('txt-m1').innerHTML = `<span class="icon-danger">✕</span> ${data.masalah_1}`;
+    document.getElementById('txt-m2').innerHTML = `<span class="icon-danger">✕</span> ${data.masalah_2}`;
+    document.getElementById('txt-m3').innerHTML = `<span class="icon-danger">✕</span> ${data.masalah_3}`;
+    
+    document.getElementById('txt-solusi').innerText = data.solusi_singkat;
+    document.getElementById('txt-harga').innerText = data.harga_promo;
+    document.getElementById('txt-coret').innerText = data.harga_coret;
+})
+        
         fetch('config.json')
             .then(response => response.json())
             .then(data => {
