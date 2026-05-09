@@ -4,124 +4,152 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Master Template PAS - MyRuko Kit</title>
+    <!-- Google Fonts: Space Grotesk & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-
-<style>
-    /* ... kode sebelumnya ... */
     
-    .masalah-text {
-        font-family: 'Space Grotesk', sans-serif;
-        font-size: 1.25rem; /* Ukuran diperbesar */
-        font-weight: 500;
-        line-height: 1.4;
-        background: linear-gradient(to right, #ffffff, #9ca3af);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 1rem;
-        display: flex;
-        align-items: flex-start;
-    }
+    <style>
+        :root { 
+            --primary: #10b981; 
+            --bg-dark: #0f172a; 
+            --glass: rgba(255, 255, 255, 0.05); 
+        }
 
-    .icon-danger {
-        color: #ef4444; /* Merah cerah untuk icon */
-        margin-right: 12px;
-        font-size: 1.4rem;
-        -webkit-text-fill-color: initial; /* Agar icon tidak ikut gradasi teks */
-    }
-</style>
-    
+        body { 
+            background-color: var(--bg-dark); 
+            color: #e2e8f0; 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+        }
+
+        .glass-card { 
+            background: var(--glass); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            border-radius: 24px; 
+        }
+
+        /* Estetika Teks Masalah */
+        .masalah-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.35rem; /* Ukuran Besar & Menarik */
+            font-weight: 500;
+            line-height: 1.5;
+            background: linear-gradient(to right, #ffffff, #9ca3af);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1.25rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .icon-danger {
+            color: #ef4444; 
+            margin-right: 15px;
+            font-size: 1.5rem;
+            -webkit-text-fill-color: initial; 
+            font-weight: bold;
+        }
+
+        input {
+            background: rgba(255, 255, 255, 0.05) !important;
+            border: 1px solid rgba(255, 255, 255, 0.1) !important;
+            color: white !important;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: var(--primary) !important;
+            box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+            outline: none;
+        }
+    </style>
 </head>
 <body class="p-6 leading-relaxed">
 
     <div class="max-w-2xl mx-auto py-10">
+        <!-- HEADER / PROBLEM SECTION -->
         <header class="text-center mb-10">
-            <h1 id="txt-produk" class="text-3xl font-black text-white mb-4 uppercase tracking-tighter">Memuat Data...</h1>
-            <div class="glass-card p-6 border-l-4 border-emerald-500 text-left">
-                <ul class="space-y-3 text-sm text-gray-300">
-                    <li id="txt-m1"></li>
-                    <li id="txt-m2"></li>
-                    <li id="txt-m3"></li>
-                </ul>
+            <h1 id="txt-produk" class="text-3xl md:text-4xl font-black text-white mb-8 uppercase tracking-tighter" style="font-family: 'Space Grotesk', sans-serif;">
+                Memuat Data...
+            </h1>
+            
+            <div class="glass-card p-8 border-l-8 border-red-500 text-left shadow-2xl">
+                <div id="txt-m1" class="masalah-text"></div>
+                <div id="txt-m2" class="masalah-text"></div>
+                <div id="txt-m3" class="masalah-text"></div>
             </div>
         </header>
 
-        <!-- HEADER / PROBLEM -->
-<header class="text-center mb-10">
-    <h1 id="txt-produk" class="text-4xl font-black text-white mb-6 uppercase tracking-tighter">Memuat Data...</h1>
-    
-    <div class="glass-card p-8 border-l-4 border-red-500 text-left shadow-2xl">
-        <div id="txt-m1" class="masalah-text"></div>
-        <div id="txt-m2" class="masalah-text"></div>
-        <div id="txt-m3" class="masalah-text"></div>
-    </div>
-</header>
-
-        
-        <div class="glass-card p-3 mb-10">
-            <img id="img-produk" src="" class="w-full h-64 object-cover rounded-xl" alt="Foto Produk">
+        <!-- IMAGE SECTION -->
+        <div class="glass-card p-3 mb-10 shadow-2xl">
+            <img id="img-produk" src="" class="w-full h-72 object-cover rounded-2xl" alt="Foto Produk">
         </div>
 
+        <!-- SOLUTION SECTION -->
         <section class="text-center mb-12">
-            <p id="txt-solusi" class="text-lg text-gray-300 italic mb-8"></p>
+            <p id="txt-solusi" class="text-xl text-gray-300 italic mb-10 font-light"></p>
             
-            <div class="text-4xl font-black text-white mb-2">Rp <span id="txt-harga">0</span></div>
-            <p class="text-gray-500 line-through">Harga Normal Rp <span id="txt-coret">0</span></p>
+            <div class="text-5xl font-black text-white mb-2" style="font-family: 'Space Grotesk', sans-serif;">
+                Rp <span id="txt-harga">0</span>
+            </div>
+            <p class="text-gray-500 line-through text-lg">Harga Normal Rp <span id="txt-coret">0</span></p>
         </section>
 
-        <div class="glass-card p-8">
-            <h3 class="text-xl font-bold mb-6 text-center text-white">Isi Data Pesanan</h3>
-            <form id="orderForm" class="space-y-4">
-                <input type="text" id="input-nama" placeholder="Nama Lengkap" class="w-full p-4 rounded-xl bg-white/5 border border-white/10 text-white focus:outline-none focus:border-emerald-500" required>
-                <button type="submit" class="w-full bg-emerald-500 py-4 rounded-full font-black text-white shadow-xl hover:scale-105 transition-all">
-                    PESAN VIA WHATSAPP
+        <!-- ORDER FORM -->
+        <div class="glass-card p-8 shadow-2xl border border-emerald-500/20">
+            <h3 class="text-2xl font-bold mb-8 text-center text-white" style="font-family: 'Space Grotesk', sans-serif;">
+                Mulai Investasi Sekarang
+            </h3>
+            <form id="orderForm" class="space-y-5">
+                <div>
+                    <label class="block text-xs uppercase tracking-widest text-emerald-500 font-bold mb-2 ml-1">Nama Lengkap</label>
+                    <input type="text" id="input-nama" placeholder="Masukkan nama Anda..." class="w-full p-4 rounded-xl focus:outline-none" required>
+                </div>
+                <button type="submit" class="w-full bg-emerald-500 py-5 rounded-full font-black text-white text-xl shadow-xl hover:bg-emerald-400 hover:scale-[1.02] transition-all duration-300">
+                    KIRIM PESANAN KE WHATSAPP
                 </button>
             </form>
+            <p class="text-center text-gray-500 text-xs mt-6 uppercase tracking-widest italic">Aman • Cepat • Terverifikasi</p>
         </div>
     </div>
 
     <script>
         let configData = {};
 
-        // Fungsi mengambil data dari file JSON
-
-// ... di dalam fetch('config.json') ...
-.then(data => {
-    configData = data;
-    document.getElementById('txt-produk').innerText = data.nama_produk;
-    document.getElementById('img-produk').src = data.link_gambar;
-    
-    // Memasukkan teks dengan ikon khusus
-    document.getElementById('txt-m1').innerHTML = `<span class="icon-danger">✕</span> ${data.masalah_1}`;
-    document.getElementById('txt-m2').innerHTML = `<span class="icon-danger">✕</span> ${data.masalah_2}`;
-    document.getElementById('txt-m3').innerHTML = `<span class="icon-danger">✕</span> ${data.masalah_3}`;
-    
-    document.getElementById('txt-solusi').innerText = data.solusi_singkat;
-    document.getElementById('txt-harga').innerText = data.harga_promo;
-    document.getElementById('txt-coret').innerText = data.harga_coret;
-})
-        
+        // Mengambil data dari config.json
         fetch('config.json')
             .then(response => response.json())
             .then(data => {
                 configData = data;
-                // Update tampilan dari JSON
+                
+                // Update UI secara otomatis
                 document.getElementById('txt-produk').innerText = data.nama_produk;
                 document.getElementById('img-produk').src = data.link_gambar;
-                document.getElementById('txt-m1').innerText = "❌ " + data.masalah_1;
-                document.getElementById('txt-m2').innerText = "❌ " + data.masalah_2;
-                document.getElementById('txt-m3').innerText = "❌ " + data.masalah_3;
+                
+                // Update Masalah dengan Ikon Estetik
+                document.getElementById('txt-m1').innerHTML = `<span class="icon-danger">✕</span> ${data.masalah_1}`;
+                document.getElementById('txt-m2').innerHTML = `<span class="icon-danger">✕</span> ${data.masalah_2}`;
+                document.getElementById('txt-m3').innerHTML = `<span class="icon-danger">✕</span> ${data.masalah_3}`;
+                
                 document.getElementById('txt-solusi').innerText = data.solusi_singkat;
                 document.getElementById('txt-harga').innerText = data.harga_promo;
                 document.getElementById('txt-coret').innerText = data.harga_coret;
             })
-            .catch(err => console.error("Gagal memuat JSON. Pastikan file config.json ada dalam satu folder.", err));
+            .catch(err => {
+                console.error("Gagal memuat JSON:", err);
+                document.getElementById('txt-produk').innerText = "Gagal Memuat Data (Cek config.json)";
+            });
 
-        // Handle Form WhatsApp
+        // Integrasi Formulir ke WhatsApp
         document.getElementById('orderForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const namaClient = document.getElementById('input-nama').value;
-            const pesanWA = `*PESANAN BARU*%0A*Produk:* ${configData.nama_produk}%0A*Nama Pembeli:* ${namaClient}%0A*Harga:* Rp ${configData.harga_promo}`;
+            const pesanWA = `*PESANAN BARU DARI WEB*%0A%0A` +
+                           `*Produk:* ${configData.nama_produk}%0A` +
+                           `*Nama Pembeli:* ${namaClient}%0A` +
+                           `*Harga:* Rp ${configData.harga_promo}%0A%0A` +
+                           `_Mohon segera diproses Admin._`;
+            
             window.location.href = `https://wa.me/${configData.nomor_wa}?text=${pesanWA}`;
         });
     </script>
